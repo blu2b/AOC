@@ -1,11 +1,16 @@
-import { readFileSync } from 'fs';
+import { ReadFile } from '../../helper/typescript/helper';
 
-IdentifyElfCarryingMostCalories(ElfBagCalories(ElfBagsbyList(ReadList())));
+Main();
 
-// read list from file
-function ReadList() {
-    const file = readFileSync('./CalorieList.txt', 'utf-8');
-    return file;
+function Main() {
+    // read calories from file
+let calorieList = ReadFile('./CalorieList.txt')
+// store items in bags
+let elfBags = ElfBagsbyList(calorieList)
+// sum up calories in bag
+let caloriesPerBag = ElfBagCalories(elfBags);
+// find elf with most calories in bag
+IdentifyElfCarryingMostCalories(caloriesPerBag);
 }
 
 // assign every item to an elf bag, every elf bag represents an elf
