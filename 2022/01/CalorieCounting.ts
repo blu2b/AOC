@@ -4,9 +4,9 @@ Main();
 
 function Main() {
     // read calories from file
-let calorieList = ReadFile('./CalorieList.txt')
+let calorieList = ReadFile('./CalorieList.txt');
 // store items in bags
-let elfBags = ElfBagsbyList(calorieList)
+let elfBags = ElfBagsbyList(calorieList);
 // sum up calories in bag
 let caloriesPerBag = ElfBagCalories(elfBags);
 // find elf with most calories in bag
