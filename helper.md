@@ -6,7 +6,7 @@
 ``` batch
 npm init --yes
 ```
-- save ``typescript`` compoiler and loader ``ts-node`` as development dependencies
+- save ``typescript`` compiler and loader ``ts-node`` as development dependencies
 ``` batch
 npm i -D typescript ts-node
 ```

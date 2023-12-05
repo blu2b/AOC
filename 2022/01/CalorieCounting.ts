@@ -1,21 +1,21 @@
-import { ReadFile } from '../../helper/typescript/helper';
+import { ReadFile, SplitMultiLineString } from '../../helper/typescript/helper';
 
 Main();
 
 function Main() {
     // read calories from file
-let calorieList = ReadFile('./CalorieList.txt');
-// store items in bags
-let elfBags = ElfBagsbyList(calorieList);
-// sum up calories in bag
-let caloriesPerBag = ElfBagCalories(elfBags);
-// find elf with most calories in bag
-IdentifyElfCarryingMostCalories(caloriesPerBag);
+    let calorieList = ReadFile('./CalorieList.txt');
+    // store items in bags
+    let elfBags = ElfBagsbyList(calorieList);
+    // sum up calories in bag
+    let caloriesPerBag = ElfBagCalories(elfBags);
+    // find elf with most calories in bag
+    IdentifyElfCarryingMostCalories(caloriesPerBag);
 }
 
 // assign every item to an elf bag, every elf bag represents an elf
 function ElfBagsbyList(calorieString : string) {
-    let calorieItems = calorieString.split("\r\n"); // split string to items
+    let calorieItems = SplitMultiLineString(calorieString); // split string to items
     let i = 0; // bag index
     let elfBags : Array<string[]> = new Array(); // each index represents one elf bag
     let calories: string[] = new Array(); // all calories inside a single bag
