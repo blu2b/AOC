@@ -12,7 +12,7 @@ class Game {
     }
 
     // determine if game is possible based on total amount of cubes in bag
-    Possible(totalCubesInBag : CubeSet) {
+    IsPossible(totalCubesInBag : CubeSet) {
         let isPossible = true;
 
         for (const set of this.sets) {
@@ -76,10 +76,11 @@ function Main() {
     let games = ParseGamesRecord(file);
 
     const totalCubesInBag = new CubeSet();
+
+    // sample cubes
     totalCubesInBag.Fill(12,13,14);
-    for (let game of games) {
-        console.log(`Game ${game.id} is possible: ${game.Possible(totalCubesInBag)}`);
-    }
+    console.log(`Game with a total of  ${totalCubesInBag.red} red, ${totalCubesInBag.green} green and ${totalCubesInBag.blue} blue cubes.`);
+    DeterminePossibleGames(games, totalCubesInBag);
 }
 
 // parse games from games record document into game objects
@@ -130,8 +131,13 @@ function ParseCubeSets(sets : string) {
     return cubeSets;
 }
 
-// determines possible games by id
-function DeterminePossibleGames(totalCubesInBag : CubeSet) {
-        // compare every color of total cubes in bag with every set from the game
-        
+function DeterminePossibleGames(games : Game[], totalCubesInBag : CubeSet) {
+    let idSum = 0;
+    for (let game of games) {
+        if (game.IsPossible(totalCubesInBag)) {
+            idSum += game.id;
+            console.log(`Game ${game.id} is possible.`);
+        }        
+    }
+    console.log(`Sum from id of all possible games is: ${idSum}`);
 }
